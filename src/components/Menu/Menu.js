@@ -33,7 +33,7 @@ function Menu () {
                 </li> */}
 
                 {routes.map(route => (
-                    <li>
+                    <li key={route.to}>
                         <NavLink 
                             to={route.to}
                             end
@@ -55,7 +55,7 @@ function Menu () {
 const routes = [];
 routes.push({
     to: "/",
-    text: "Home"
+    text: "Home",
 });
 
 routes.push({
@@ -68,6 +68,6 @@ routes.push({
     text: "Profile"
 });
 
-console.log(routes);
+
 
 export {Menu}

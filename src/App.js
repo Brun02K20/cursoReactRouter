@@ -6,6 +6,7 @@ import './App.css';
 import { HomePage } from "./components/HomePage/HomePage.js";
 import { BlogPage } from "./components/BlogPage/BlogPage.js";
 import { ProfilePage } from "./components/ProfilePage/ProfilePage.js";
+import { BlogPost } from "./components/BlogPost/BlogPost.js";
 import { Menu } from "./components/Menu/Menu.js";
 
 // hash router es un provider, como lo del react context. Adentro de este proveedor ponemos lo que queramos que vaya en todas las rutas. Por ejemplo un menu, un footer, etc
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={< HomePage />} />
           <Route path="/blog" element={< BlogPage />} />
+          <Route path="/blog/:slug" element={< BlogPost />}></Route>
           <Route path="/profile" element={< ProfilePage />} />
           <Route path="*" element={<p>Not Found</p>} />
         </Routes>
