@@ -16,6 +16,8 @@ function BlogPost(){
 
     return(
         <>
+
+
             <h3>{blogpost.title}</h3>
             <button onClick={returnToBlog}>Volver a la seccion de blogs</button>
             <p>{blogpost.content}</p>

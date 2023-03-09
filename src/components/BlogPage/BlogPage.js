@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { blogdata } from "../BlogPost/blogdata.js";
 
 function BlogPage() {
     return (
         <>
             <h1>Blog page</h1>
+            {/* el outlet se renderiza en funcion de donde lo coloquemos como cualquier componente normal */}
+            <Outlet />
 
             <ul>
                 {blogdata.map(publication => (
