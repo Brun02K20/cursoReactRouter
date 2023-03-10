@@ -1,7 +1,7 @@
 // componente auth.js, lo declare en minusculas porque va a haber varios exports en este archivo
 
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 const AuthContext = React.createContext();
 
@@ -44,6 +44,18 @@ function useAuth() {
     return auth;
 };
 
+// si tengo muchas rutas privadas que proteger puedo hacer algo como esto
+function AuthRoute(props) {
+    const auth = useAuth();
+
+    // asi se protege a una unica ruta privada
+    if (!auth.user) {
+        return <Navigate to="/login" />
+    }
+
+    return props.children;
+}
 
 
-export {AuthProvider, useAuth };
+
+export {AuthProvider, useAuth, AuthRoute };

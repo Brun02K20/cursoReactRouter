@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import {  AuthProvider, useAuth } from "../../auth";
 
 // nota, manejo de inputs en react:
@@ -25,6 +25,11 @@ function LoginPage(){
         evento.preventDefault();
         auth.login({username})
     };
+
+    // proteger una ruta publica
+    if(auth.user){
+        return <Navigate to="/profile" />
+    }
 
     return(
         <>

@@ -9,7 +9,7 @@ import { ProfilePage } from "./components/ProfilePage/ProfilePage.js";
 import { BlogPost } from "./components/BlogPost/BlogPost.js";
 import { LoginPage } from "./components/LoginPage/LoginPage.js";
 import { LogoutPage } from "./components/LogoutPage/LogoutPage.js";
-import { AuthProvider, useAuth  } from "./auth";
+import { AuthProvider, AuthRoute, useAuth  } from "./auth";
 
 import { Menu } from "./components/Menu/Menu.js";
 
@@ -32,8 +32,24 @@ function App() {
             </Route >
             
             <Route path="/login" element={< LoginPage />} />
-            <Route path="/logout" element={< LogoutPage />} />
-            <Route path="/profile" element={< ProfilePage />} />
+            <Route 
+              path="/logout" 
+              element={
+                <AuthRoute>
+                  < LogoutPage />
+                </AuthRoute>
+              } 
+            />
+
+            {/* Solucion 2 */}
+            <Route 
+              path="/profile" 
+              element={
+                <AuthRoute>
+                  < ProfilePage />
+                </AuthRoute>
+              } 
+            />
             <Route path="*" element={<p>Not Found</p>} />
           </Routes>
         </AuthProvider> 
