@@ -1,7 +1,7 @@
 import React from "react";
 
 function HomePage() {
-    return (<p>Home page</p>);
+    return (<h2>Home page</h2>);
 };
 
 export {HomePage}

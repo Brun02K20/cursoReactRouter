@@ -7,31 +7,6 @@ function Menu () {
     return(
         <nav>
             <ul>
-                {/* <li>
-                    <Link to="/">Home</Link>
-                </li>
-
-                <li>
-                    <Link to="/blog">Blog</Link>
-                </li>
-
-                <li>
-                    <Link to="/profile">Profile</Link>
-                </li> */}
-
-
-                {/* <li>
-                    <NavLink to="/" end>Home</NavLink>
-                </li>
-
-                <li>
-                    <NavLink to="/blog" end>Blog</NavLink>
-                </li>
-
-                <li>
-                    <NavLink to="/profile" end>Profile</NavLink>
-                </li> */}
-
                 {routes.map(route => (
                     <li key={route.to}>
                         <NavLink 
@@ -45,13 +20,12 @@ function Menu () {
                         </NavLink>
                     </li>
                 ))}
-
             </ul>
         </nav>
     );
 };
 
-// para no repetir codigo tediosamente
+
 const routes = [];
 routes.push({
     to: "/",
@@ -67,6 +41,18 @@ routes.push({
     to: "/profile",
     text: "Profile"
 });
+
+routes.push({
+    to: "/login",
+    text: "LOGIN"
+});
+
+routes.push({
+    to: "/logout",
+    text: "LOGOUT"
+});
+
+
 
 
 

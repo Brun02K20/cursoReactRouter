@@ -7,6 +7,10 @@ import { HomePage } from "./components/HomePage/HomePage.js";
 import { BlogPage } from "./components/BlogPage/BlogPage.js";
 import { ProfilePage } from "./components/ProfilePage/ProfilePage.js";
 import { BlogPost } from "./components/BlogPost/BlogPost.js";
+import { LoginPage } from "./components/LoginPage/LoginPage.js";
+import { LogoutPage } from "./components/LogoutPage/LogoutPage.js";
+import { AuthProvider, useAuth  } from "./auth";
+
 import { Menu } from "./components/Menu/Menu.js";
 
 // hash router es un provider, como lo del react context. Adentro de este proveedor ponemos lo que queramos que vaya en todas las rutas. Por ejemplo un menu, un footer, etc
@@ -18,21 +22,21 @@ function App() {
   return (
     <>
       <HashRouter>
-        <Menu />
-        
-        <Routes>
-          <Route path="/" element={< HomePage />} />
-
-          <Route path="/blog" element={< BlogPage />}>
-            <Route path=":slug" element={< BlogPost />} />
-          </Route >
+        <AuthProvider>
+          <Menu />
           
-
-          <Route path="/profile" element={< ProfilePage />} />
-
-          <Route path="*" element={<p>Not Found</p>} />
-        </Routes>
-        
+          <Routes>
+            <Route path="/" element={< HomePage />} />
+            <Route path="/blog" element={< BlogPage />}>
+              <Route path=":slug" element={< BlogPost />} />
+            </Route >
+            
+            <Route path="/login" element={< LoginPage />} />
+            <Route path="/logout" element={< LogoutPage />} />
+            <Route path="/profile" element={< ProfilePage />} />
+            <Route path="*" element={<p>Not Found</p>} />
+          </Routes>
+        </AuthProvider> 
       </HashRouter>
     </>
   );
