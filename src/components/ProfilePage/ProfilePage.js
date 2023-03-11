@@ -6,7 +6,7 @@ function ProfilePage() {
     return (
         <AuthRoute>
             <h2>Profile</h2>
-            <p> Welcome, {auth.user?.username} </p>
+            <p> Welcome, {auth.user.name} </p>
         </AuthRoute>
     );
 };

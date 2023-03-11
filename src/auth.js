@@ -5,6 +5,46 @@ import { useNavigate, Navigate } from "react-router-dom";
 
 const adminList = ["Irisval", "RetaxMaster", "Freddier"];
 
+const roles = {
+    admin: {
+        delete: true,
+        edit: true,
+        read: true
+    },
+    editor: {
+        delete: false,
+        edit: true,
+        read: true
+    },
+    visitor: {
+        delete: false,
+        edit: false,
+        read: true
+    }
+};
+
+const registeredUsers = [
+    {
+        name: "Bruno",
+        rol: roles.editor
+    },
+    {
+        name: "Juan",
+        rol: roles.admin
+    },
+    {
+        name: "Laura",
+        rol: roles.visitor
+    },
+    {
+        name: "Fernando",
+        rol: roles.admin
+    },
+    {
+        name: "Lucas",
+        rol: roles.editor
+    }
+]
 
 const AuthContext = React.createContext();
 
@@ -17,9 +57,8 @@ function AuthProvider({children}) {
     const [user, setUser] = React.useState(null);
 
     const login = ({username}) => {
-        const isAdmin = adminList.find(admin => admin === username)
-
-        setUser({username, isAdmin});
+        const role = registeredUsers.find(usu => usu.name === username);
+        role !== undefined ? setUser(role) : setUser({ name: username, rol: roles.visitor });
         navigate("/profile");
     };
 

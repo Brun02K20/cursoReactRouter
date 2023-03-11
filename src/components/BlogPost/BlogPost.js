@@ -13,8 +13,9 @@ function BlogPost(){
 
     const navigate =  useNavigate();
 
-    const canDelete = auth.user?.isAdmin || blogpost.author === auth.user?.username;
-    
+    // const canDelete = auth.user?.isAdmin || blogpost.author === auth.user?.username;
+    const canDelete = auth.user?.rol.delete
+    const canEdit = auth.user?.rol.edit
 
     const returnToBlog = () => {
         navigate("/blog");
@@ -22,8 +23,6 @@ function BlogPost(){
 
     return(
         <>
-
-
             <h3>{blogpost.title}</h3>
             <button onClick={returnToBlog}>Volver a la seccion de blogs</button>
             <p>{blogpost.content}</p>
@@ -32,6 +31,10 @@ function BlogPost(){
             {/* Si hay un auth.user y tiene su .isAdmin en true:  */}
             {canDelete && (
                 <button>Eliminar blogpost</button>
+            )}
+
+            {canEdit && (
+                <button>Editar blogpost</button>
             )}
         </>
     );
